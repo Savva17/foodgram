@@ -12,7 +12,21 @@
 [![docker](https://img.shields.io/badge/-Docker-464646?style=flat-square&logo=docker)](https://www.docker.com/)
 [![GitHub%20Actions](https://img.shields.io/badge/-GitHub%20Actions-464646?style=flat-square&logo=GitHub%20actions)](https://github.com/features/actions)
 
+## Описание
+
 Foodgram реализован для публикации рецептов. Авторизованные пользователи
 могут подписываться на понравившихся авторов, добавлять рецепты в избранное,
 в покупки, скачать список покупок ингредиентов для добавленных в покупки
 рецептов.
+
+### Адрес проекта
+
+Проект предоставлен по адресу
+```
+https://fooodgram.zapto.org/
+```
+
+Автор проекта: Морозов Савва
+
+Профили автора на GitHub:
+- **GitHub**: [Профиль Савва Морозов](https://github.com/Savva17)

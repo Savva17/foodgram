@@ -2,7 +2,7 @@ from djoser.serializers import UserCreateSerializer, UserSerializer
 from recipes.models import (FavouriteRecipe, Ingredient, Recipe,
                             RecipeIngredient, RecipeTag, ShoppingList, Tag)
 from rest_framework import status
-from rest_framework.serializers import (CharField, ImageField, IntegerField,
+from rest_framework.serializers import (CharField, IntegerField,
                                         ModelSerializer,
                                         PrimaryKeyRelatedField,
                                         SerializerMethodField, SlugField,
@@ -12,21 +12,6 @@ from users.config import MAX_LENGTH_PASSWORD, MIN_LENGTH_PASSWORD
 from users.models import CustomUser, Subscription
 
 from .fields import Base64ImageFieldAvatar
-
-# class Base64ImageField(ImageField):
-#     """Сериализатор для поля image."""
-
-#     def to_internal_value(self, data):
-#         if isinstance(data, str) and data.startswith('data:image'):
-#             img_format, img_str = data.split(';base64,')
-#             ext = img_format.split("/")[-1]
-#             if ext.lower() not in ('jpeg', 'jpg', 'png'):
-#                 raise ValidationError(
-#                     'Формат изображения не поддерживается. ',
-#                     'Используйте форматы JPEG или PNG.'
-#                 )
-#             data = ContentFile(base64.b64decode(img_str), name='image.' + ext)
-#         return super(Base64ImageField, self).to_internal_value(data)
 
 
 class CustomUserCreateSerializer(UserCreateSerializer):
