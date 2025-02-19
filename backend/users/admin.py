@@ -1,7 +1,7 @@
 from django.contrib import admin
 from recipes.config import LIST_ON_PAGE
-from .models import CustomUser
 
+from .models import CustomUser
 
 admin.site.empty_value_display = '-пусто-'
 
