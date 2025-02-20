@@ -44,7 +44,7 @@ class UserViewSet(DjoserViewSer):
     @action(
         methods=['get'],
         detail=False,
-        permission_classes=[IsAuthenticated,],
+        permission_classes=[IsAuthenticated],
         url_path='me',
         url_name='me'
     )
