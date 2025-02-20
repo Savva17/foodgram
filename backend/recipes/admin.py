@@ -40,7 +40,7 @@ class RecipeTagInline(BaseRecipeIngredientTagInline):
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    """Админка для рецептов"""
+    """Админка для рецептов."""
 
     list_display = (
         'name',
@@ -69,12 +69,13 @@ class RecipeAdmin(admin.ModelAdmin):
         return object.author.username
 
     @admin.display(
-        description='Ингридиенты,'
+        description='Ингредиенты,'
     )
     def get_ingredients(self, object):
-        """Список тегов."""
+        """Список ингредиентов."""
         return '\n'.join(
-            obj.ingredient.name for obj in object.recipe_ingredients.all()
+            object.recipe_ingredients.values_list(
+                'ingredient__name', flat=True).order_by('id')
         )
 
     @admin.display(
@@ -82,7 +83,8 @@ class RecipeAdmin(admin.ModelAdmin):
     )
     def get_tags(self, object):
         """Список тегов."""
-        return '\n'.join(obj.tag.name for obj in object.recipe_tags.all())
+        return '\n'.join(
+            object.recipe_tags.values_list('tag__name', flat=True))
 
     @admin.display(
         description='Количество добавлений в избранное'
@@ -116,7 +118,7 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(Ingredient)
 class IngredientAdmin(admin.ModelAdmin):
-    """Админка Ингридиента."""
+    """Админка Ингредиента."""
 
     list_display = (
         'id',
@@ -135,7 +137,7 @@ class IngredientAdmin(admin.ModelAdmin):
 
 @admin.register(RecipeIngredient)
 class RecipeIngredientAdmin(admin.ModelAdmin):
-    """Админка Рецепта/Ингридиента."""
+    """Админка Рецепта/Ингредиента."""
 
     list_display = (
         'recipe',

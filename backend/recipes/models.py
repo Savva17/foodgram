@@ -11,7 +11,7 @@ User = get_user_model()
 
 
 class Ingredient(models.Model):
-    """Модель ингридиента."""
+    """Модель ингредиента."""
 
     name = models.CharField(
         verbose_name='Название',

@@ -87,11 +87,11 @@ class CustomUserSerializer(UserSerializer):
     def get_subscribe_status(self, obj: CustomUser) -> bool:
         """Проверяет подписку пользователя."""
         user = self.context.get('request').user
-        if user is None or user.is_anonymous or (user == obj):
+        is_anonym = user is None or user.is_anonymous or user == obj
+        if is_anonym:
             return False
         return (
-            user.is_authenticated
-            and user.follower.filter(following=obj).exists()
+            user.follower.filter(following=obj).exists()
         )
 
 
@@ -206,7 +206,7 @@ class TagSerializer(ModelSerializer):
 
 
 class GetRecipeIngredientsSerializer(ModelSerializer):
-    """Сериализатор получения связи рецепта и ингридиента."""
+    """Сериализатор получения связи рецепта и ингредиента."""
 
     id = IntegerField(source='ingredient.id')
     name = CharField(source='ingredient.name')
@@ -223,7 +223,7 @@ class GetRecipeIngredientsSerializer(ModelSerializer):
 
 
 class IngredientSerializer(ModelSerializer):
-    """Сериализатор для ингридиентов."""
+    """Сериализатор для ингредиентов."""
 
     class Meta:
         model = Ingredient
@@ -235,7 +235,7 @@ class IngredientSerializer(ModelSerializer):
 
 
 class CreateRecipeIngredientSerializer(ModelSerializer):
-    """Сериализатор создания связи рецепта и ингридиента."""
+    """Сериализатор создания связи рецепта и ингредиента."""
 
     id = PrimaryKeyRelatedField(
         queryset=Ingredient.objects.all(),
@@ -307,18 +307,23 @@ class GetRecipeSerializer(ModelSerializer):
             'cooking_time',
         )
 
-    def get_is_favorited(self, obj):
+    def check_is_favorited_or_in_shopping_list(self, obj, related_field):
         request = self.context.get('request')
         return (
-            request and request.user.is_authenticated
-            and request.user.favourite.filter(recipe=obj).exists()
+            request
+            and request.user.is_authenticated
+            and getattr(request.user, related_field).filter(
+                recipe=obj).exists()
+        )
+
+    def get_is_favorited(self, obj):
+        return self.check_is_favorited_or_in_shopping_list(
+            obj, 'favourite'
         )
 
     def get_is_in_shopping_cart(self, obj):
-        request = self.context.get('request')
-        return (
-            request and request.user.is_authenticated
-            and request.user.shopping_list.filter(recipe=obj).exists()
+        return self.check_is_favorited_or_in_shopping_list(
+            obj, 'shopping_list'
         )
 
 
@@ -464,7 +469,7 @@ class ShoppingCartRecipeSerializer(ModelSerializer):
         if is_in_cart:
             raise ValidationError(
                 f'Рецепт \'{data["recipe"]}\''
-                'уже добавлен в избранное.'
+                'уже добавлен в список покупок.'
             )
         return data
 

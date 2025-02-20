@@ -151,7 +151,7 @@ class TagViewSet(
 class IngredientViewSet(
     viewsets.ReadOnlyModelViewSet
 ):
-    """Вьюсет Ингридиента."""
+    """Вьюсет Ингредиента."""
 
     queryset = Ingredient.objects.all()
     serializer_class = IngredientSerializer
@@ -220,7 +220,7 @@ class RecipeViewSet(
         url_name='shopping_cart',
     )
     def add_recipe_to_shopping_cart(self, request, id):
-        """Добавление и удаление рецепта в корзину покупок."""
+        """Добавление и удаление рецепта в список покупок."""
 
         return self.add_recipe_to_favorite_or_cart(
             serializer=ShoppingCartRecipeSerializer,
@@ -256,7 +256,7 @@ class RecipeViewSet(
         recipe = rel_model.objects.filter(
             user=user, recipe=recipe
         )
-        if not recipe:
+        if recipe.exists():
             return Response(status=status.HTTP_400_BAD_REQUEST)
         recipe.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
