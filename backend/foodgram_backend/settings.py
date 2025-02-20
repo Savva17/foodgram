@@ -7,12 +7,6 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECRET_KEY = 'django-insecure-bg!k#n5er+@!*e6le+sbubq4cj5%m+_hcm**fyn&0)z5kha)vj'
-
-# DEBUG = True
-
-# ALLOWED_HOSTS = ['84.201.162.104', 'fooodgram.zapto.org', "localhost", "127.0.0.1"]
-
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default_secret_key')
 
 DEBUG = os.getenv('DEBUG', 'False').lower() in ('True', '1')
