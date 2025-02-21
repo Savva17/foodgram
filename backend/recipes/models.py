@@ -245,7 +245,7 @@ class RecipeTag(models.Model):
 
 
 class RecipeIngredient(models.Model):
-    """Промежуточная модель для связи рецепта и ингридиента"""
+    """Промежуточная модель для связи рецепта и ингредиента."""
 
     recipe = models.ForeignKey(
         to=Recipe,

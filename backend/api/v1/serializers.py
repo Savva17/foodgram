@@ -1,6 +1,9 @@
 from djoser.serializers import UserCreateSerializer, UserSerializer
-from recipes.models import (FavouriteRecipe, Ingredient, Recipe,
-                            RecipeIngredient, RecipeTag, ShoppingList, Tag)
+
+from recipes.models import (
+    FavouriteRecipe, Ingredient, Recipe,
+    RecipeIngredient, RecipeTag, ShoppingList, Tag
+)
 from rest_framework import status
 from rest_framework.serializers import (CharField, IntegerField,
                                         ModelSerializer,
