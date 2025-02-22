@@ -270,8 +270,8 @@ class RecipeIngredient(models.Model):
 
     class Meta:
         default_related_name = 'recipes_ingredients'
-        verbose_name = 'Связь рецепта и ингридиента'
-        verbose_name_plural = 'Связи рецептов и ингридиентов'
+        verbose_name = 'Связь рецепта и ингредиента'
+        verbose_name_plural = 'Связи рецептов и ингредиентов'
         ordering = ('recipe',)
         constraints = (
             models.UniqueConstraint(
