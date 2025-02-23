@@ -1,19 +1,28 @@
 from djoser.serializers import UserCreateSerializer, UserSerializer
 
 from rest_framework import status
-from rest_framework.serializers import (CharField, IntegerField,
-                                        ModelSerializer,
-                                        PrimaryKeyRelatedField,
-                                        SerializerMethodField, SlugField,
-                                        ValidationError)
+from rest_framework.serializers import (
+    CharField,
+    IntegerField,
+    ModelSerializer,
+    PrimaryKeyRelatedField,
+    SerializerMethodField,
+    SlugField,
+    ValidationError,
+)
 from rest_framework.validators import UniqueTogetherValidator
 
 from users.config import MAX_LENGTH_PASSWORD, MIN_LENGTH_PASSWORD
 from users.models import CustomUser, Subscription
 
 from recipes.models import (
-    FavouriteRecipe, Ingredient, Recipe,
-    RecipeIngredient, RecipeTag, ShoppingList, Tag
+    FavouriteRecipe,
+    Ingredient,
+    Recipe,
+    RecipeIngredient,
+    RecipeTag,
+    ShoppingList,
+    Tag,
 )
 
 from .fields import Base64ImageFieldAvatar

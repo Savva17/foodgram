@@ -3,26 +3,44 @@ import uuid
 from django.db.models import Sum
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
+
 from django_filters.rest_framework import DjangoFilterBackend
+
 from djoser.views import UserViewSet as DjoserViewSer
-from recipes.config import SHORT_LINK_MAX_POSTFIX, URL
-from recipes.models import (FavouriteRecipe, Ingredient, Recipe,
-                            RecipeIngredient, ShoppingList, Tag)
+
 from rest_framework import filters, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated
 from rest_framework.response import Response
+
+from recipes.config import SHORT_LINK_MAX_POSTFIX, URL
+from recipes.models import (
+    FavouriteRecipe,
+    Ingredient,
+    Recipe,
+    RecipeIngredient,
+    ShoppingList,
+    Tag
+)
+
 from users.models import CustomUser, Subscription
 
 from .filters import IngredientFilterSet, RecipeFilterSet
 from .pagination import CustomPagination
 from .permissions import IsAuthorOrReadOnly
-from .serializers import (AvatarSerializer, CreateRecipeSerializer,
-                          CreateSubscriptionSerializer,
-                          CustomUserCreateSerializer, CustomUserSerializer,
-                          FavouriteRecipeSerializer, GetRecipeSerializer,
-                          IngredientSerializer, ShoppingCartRecipeSerializer,
-                          ShowSubscriptionSerializer, TagSerializer)
+from .serializers import (
+    AvatarSerializer,
+    CreateRecipeSerializer,
+    CreateSubscriptionSerializer,
+    CustomUserCreateSerializer,
+    CustomUserSerializer,
+    FavouriteRecipeSerializer,
+    GetRecipeSerializer,
+    IngredientSerializer,
+    ShoppingCartRecipeSerializer,
+    ShowSubscriptionSerializer,
+    TagSerializer
+)
 
 
 class UserViewSet(DjoserViewSer):
