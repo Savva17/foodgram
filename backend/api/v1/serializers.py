@@ -1,3 +1,7 @@
+from djoser.serializers import (
+    UserCreateSerializer,
+    UserSerializer,
+)
 from rest_framework import status
 from rest_framework.serializers import (
     CharField,
@@ -9,11 +13,6 @@ from rest_framework.serializers import (
     ValidationError,
 )
 from rest_framework.validators import UniqueTogetherValidator
-
-from djoser.serializers import (
-    UserCreateSerializer,
-    UserSerializer,
-)
 
 from recipes.models import (
     FavouriteRecipe,
@@ -32,7 +31,6 @@ from users.models import (
     CustomUser,
     Subscription,
 )
-
 from .fields import Base64ImageFieldAvatar
 
 
