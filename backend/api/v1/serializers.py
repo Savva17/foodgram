@@ -14,6 +14,7 @@ from rest_framework.serializers import (
 )
 from rest_framework.validators import UniqueTogetherValidator
 
+from api.v1.fields import Base64ImageFieldAvatar
 from recipes.models import (
     FavouriteRecipe,
     Ingredient,
@@ -31,7 +32,6 @@ from users.models import (
     CustomUser,
     Subscription,
 )
-from .fields import Base64ImageFieldAvatar
 
 
 class CustomUserCreateSerializer(UserCreateSerializer):

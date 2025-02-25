@@ -3,11 +3,8 @@ import uuid
 from django.db.models import Sum
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect
-
 from django_filters.rest_framework import DjangoFilterBackend
-
 from djoser.views import UserViewSet as DjoserViewSer
-
 from rest_framework import filters, status, viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated
@@ -22,9 +19,7 @@ from recipes.models import (
     ShoppingList,
     Tag
 )
-
 from users.models import CustomUser, Subscription
-
 from .filters import IngredientFilterSet, RecipeFilterSet
 from .pagination import CustomPagination
 from .permissions import IsAuthorOrReadOnly
