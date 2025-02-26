@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.core.validators import EmailValidator, RegexValidator
 from django.db import models
 from django.db.models import F, Q
+
 from users.config import (LENGTH_TEXT, MAX_LENGTH_EMAIL, MAX_LENGTH_FIRST_NAME,
                           MAX_LENGTH_LAST_NAME, MAX_LENGTH_USERNAME,
                           REGEX_FIELD_USERNAME)

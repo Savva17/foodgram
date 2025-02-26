@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator, RegexValidator
 from django.db import models
+
 from recipes.config import (INGREDIENT_LENGTH_NAME, LENGTH_LONG_TEXT,
                             LENGTH_SHORT_TEXT, MAX_LENGTH_NAME,
                             MAX_LENGTH_SLUG, MAX_LENGTH_TAG, MAX_LENGTH_URL,

@@ -1,7 +1,4 @@
-from djoser.serializers import (
-    UserCreateSerializer,
-    UserSerializer,
-)
+from djoser.serializers import UserCreateSerializer, UserSerializer
 from rest_framework import status
 from rest_framework.serializers import (
     CharField,
@@ -24,14 +21,8 @@ from recipes.models import (
     ShoppingList,
     Tag,
 )
-from users.config import (
-    MAX_LENGTH_PASSWORD,
-    MIN_LENGTH_PASSWORD,
-)
-from users.models import (
-    CustomUser,
-    Subscription,
-)
+from users.config import MAX_LENGTH_PASSWORD, MIN_LENGTH_PASSWORD
+from users.models import CustomUser, Subscription
 
 
 class CustomUserCreateSerializer(UserCreateSerializer):
