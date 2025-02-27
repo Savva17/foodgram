@@ -1,6 +1,8 @@
 from django.contrib import admin
+
 from recipes.models import (FavouriteRecipe, Ingredient, Recipe,
                             RecipeIngredient, RecipeTag, ShoppingList, Tag)
+
 
 admin.site.site_header = 'Администрирование Foodgram'
 admin.site.empty_value_display = '-пусто-'
